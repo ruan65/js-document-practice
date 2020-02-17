@@ -1,25 +1,17 @@
-const d = document
-let p = (text) => console.log(text)
+const bookList = document.querySelector('#book-list ul');
 
-const banner = d.querySelector('#page-banner')
-p('banner node type: ' + banner.nodeType)
-p('banner node name: ' + banner.nodeName)
-p('banner childs: ' + banner.hasChildNodes())
+bookList.addEventListener('click', function (ev) {
+    if (ev.target.className == 'delete') {
+        bookList.removeChild(ev.target.parentElement);
+    }
+});
 
-const bannerClone = banner.cloneNode(true)
-p('cloned banner: ' + bannerClone)
 
-const bookList = d.querySelector('#book-list')
+const addForm = document.forms['add-book'];
 
-p('parent node: ' + bookList.parentNode.parentNode)
-
-p(bookList.children)
-
-p('next sibling: ' + bookList.nextSibling)
-p('next sibling: ' + bookList.nextElementSibling)
-
-p(bookList.previousSibling)
-p(bookList.previousElementSibling)
-
-bookList.previousElementSibling.querySelector('p').innerHTML += 
-'<br/>Too cool for everyone else!'
+addForm.addEventListener('submit', function (ev) {
+    console.log('submitted ............. ' + ev);
+    ev.preventDefault();
+    const value = addForm.querySelector('input[type="text"]').value;
+    console.log(value);
+});
