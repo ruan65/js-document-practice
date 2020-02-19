@@ -13,5 +13,25 @@ addForm.addEventListener('submit', function (ev) {
     console.log('submitted ............. ' + ev);
     ev.preventDefault();
     const value = addForm.querySelector('input[type="text"]').value;
-    console.log(value);
+    
+    const li = document.createElement('li');
+    const bookName = document.createElement('span');
+    const deleteBtn = document.createElement('span');
+    bookName.textContent = value;
+    deleteBtn.textContent = 'delete';
+    bookName.classList.add('name');
+    deleteBtn.classList.add('delete');
+
+    li.appendChild(bookName);
+    li.appendChild(deleteBtn);
+    bookList.appendChild(li);
+
+
+
 });
+
+const hideBox = document.querySelector('#hide');
+hideBox.addEventListener('change', function(ev) {
+    console.log('changed: ' + hideBox.checked);
+    bookList.style.display = hideBox.checked ? 'none' : 'block';
+})
